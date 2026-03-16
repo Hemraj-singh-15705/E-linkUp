@@ -17,6 +17,7 @@
 
    a {
       color: $text-color;
+
       &:hover {
          color: $text-color;
          text-decoration: none;
@@ -30,6 +31,8 @@
       padding: 0.6rem 1.5rem;
       margin: 0.2rem 0;
       cursor: pointer;
+      border-radius: 10px;
+      transition: background-color 0.2s;
 
       span {
          margin-left: 1rem;
@@ -39,7 +42,22 @@
       }
 
       &:hover {
-         background-color: $border-color;
+         background-color: $hover-color;
+      }
+
+      &.active {
+         background-color: $hover-color;
+         font-weight: bold;
+
+         span {
+            font-weight: bold;
+            color: #fff;
+         }
+
+         svg {
+            fill: $accent-color;
+            color: $accent-color;
+         }
       }
    }
 
@@ -55,14 +73,17 @@
 @media (max-width: $breakpoint-medium) {
    .sidebar {
       width: 90px;
+
       li {
          justify-content: center;
       }
+
       span {
          display: none;
       }
    }
 }
+
 @media (max-width: $breakpoint-small) {
    .sidebar {
       transform: translateX(-100%);

@@ -26,7 +26,10 @@ export const getChannelDetails = id => async dispatch => {
       console.log(error.response.data)
       dispatch({
          type: CHANNEL_DETAILS_FAIL,
-         payload: error.response.data,
+         payload:
+            error.response && error.response.data
+               ? error.response.data
+               : error.message,
       })
    }
 }
@@ -49,6 +52,6 @@ export const checkSubscriptionStatus = id => async (dispatch, getState) => {
       })
       console.log(data)
    } catch (error) {
-      console.log(error.response.data)
+      console.log(error.response ? error.response.data : error.message)
    }
 }

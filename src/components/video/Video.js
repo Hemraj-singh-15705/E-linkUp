@@ -42,8 +42,10 @@ const Video = ({ video, channelScreen }) => {
                id: _videoId,
             },
          })
-         setDuration(items[0].contentDetails.duration)
-         setViews(items[0].statistics.viewCount)
+         if (items?.length > 0) {
+            setDuration(items[0].contentDetails.duration)
+            setViews(items[0].statistics.viewCount)
+         }
       }
       get_video_details()
    }, [_videoId])
@@ -58,7 +60,9 @@ const Video = ({ video, channelScreen }) => {
                id: channelId,
             },
          })
-         setChannelIcon(items[0].snippet.thumbnails.default)
+         if (items?.length > 0) {
+            setChannelIcon(items[0].snippet.thumbnails.default)
+         }
       }
       get_channel_icon()
    }, [channelId])

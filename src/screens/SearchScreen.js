@@ -20,13 +20,17 @@ const SearchScreen = () => {
    return (
       <Container>
          {!loading ? (
-            videos?.map(video => (
-               <VideoHorizontal
-                  video={video}
-                  key={video.id.videoId}
-                  searchScreen
-               />
-            ))
+            videos?.length > 0 ? (
+               videos.map(video => (
+                  <VideoHorizontal
+                     video={video}
+                     key={video.id?.videoId || video.id}
+                     searchScreen
+                  />
+               ))
+            ) : (
+               <h1 className='text-center text-white'>No educational long videos found.</h1>
+            )
          ) : (
             <SkeletonTheme color='#343a40' highlightColor='#3c4147'>
                <Skeleton width='100%' height='160px' count={20} />

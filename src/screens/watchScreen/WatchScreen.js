@@ -3,7 +3,6 @@ import { Col, Row } from 'react-bootstrap'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import Comments from '../../components/comments/Comments'
 import VideoHorizontal from '../../components/videoHorizontal/VideoHorizontal'
 import VideoMetaData from '../../components/videoMetaData/VideoMetaData'
 import { Helmet } from 'react-helmet'
@@ -50,11 +49,6 @@ const WatchScreen = () => {
             ) : (
                <h6>Loading...</h6>
             )}
-
-            <Comments
-               videoId={id}
-               totalComments={video?.statistics?.commentCount}
-            />
          </Col>
          <Col lg={4}>
             {!loading ? (

@@ -17,7 +17,6 @@ const Header = ({ handleToggleSidebar }) => {
 
       history.push(`/search/${input}`)
    }
-   const user = useSelector(state => state.auth?.user)
 
    return (
       <div className='header '>
@@ -28,7 +27,7 @@ const Header = ({ handleToggleSidebar }) => {
          />
 
          <img
-            src='http://pngimg.com/uploads/youtube/youtube_PNG2.png'
+            src='https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg'
             alt=''
             className='header__logo'
          />
@@ -46,9 +45,18 @@ const Header = ({ handleToggleSidebar }) => {
          </form>
 
          <div className='header__icons'>
-            <MdNotifications size={28} />
+            {/* //alarm clock and todo add alarm icon  */}
+            <MdNotifications size={28} onClick={() => {
+               const minutes = prompt('Enter study time in minutes:')
+               if (minutes && !isNaN(minutes)) {
+                  setTimeout(() => {
+                     const audio = new Audio('https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg')
+                     audio.play()
+                     // alert('Close your eyes and restart study after 2 minutes')
+                  }, minutes * 60 * 1000)
+               }
+            }} />
             <MdApps size={28} />
-            <img src={user?.photoURL} alt='avatar' />
          </div>
       </div>
    )

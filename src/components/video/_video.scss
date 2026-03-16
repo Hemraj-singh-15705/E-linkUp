@@ -8,22 +8,35 @@
    font-size: 0.9rem;
 
    cursor: pointer;
+   transition: transform 0.2s ease-in-out;
+
+   &:hover {
+      transform: scale(1.05);
+      z-index: 10;
+      background-color: $black-secondary;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+   }
 
    &__top {
       margin-bottom: 0.5rem;
       position: relative;
+
       .lazy-load-image-background {
          width: 100%;
       }
+
       img {
          width: 100%;
+         border-radius: 10px;
       }
+
       &__duration {
          position: absolute;
 
          bottom: 0.3rem;
          right: 0.3rem;
-width: 45px;
+         width: 45px;
          padding: 0.2rem;
          background: #080808ec;
          border-radius: 3px;
@@ -41,6 +54,7 @@ width: 45px;
       display: flex;
       align-items: center;
    }
+
    &__channel {
       display: flex;
       align-items: center;
@@ -54,6 +68,7 @@ width: 45px;
          margin-right: 0.5rem;
          cursor: pointer;
       }
+
       p {
          margin-bottom: 0;
       }
