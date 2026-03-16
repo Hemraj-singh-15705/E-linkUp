@@ -8,8 +8,10 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
+    "build": "^0.1.4",
     "firebase": "^8.2.0",
     "moment": "^2.29.1",
+    "npm": "^11.11.1",
     "numeral": "^2.0.6",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
@@ -27,6 +29,7 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
+    "run": "^1.5.0",
     "sass": "^1.77.8",
     "web-vitals": "^0.2.4"
   },
