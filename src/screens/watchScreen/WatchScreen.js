@@ -34,7 +34,7 @@ const WatchScreen = () => {
          <Helmet>
             <title>{video?.snippet?.title}</title>
          </Helmet>
-         <Col lg={8}>
+         <Col lg={8} xl={9}>
             <div className='watchScreen__player'>
                <iframe
                   src={`https://www.youtube.com/embed/${id}`}
@@ -50,7 +50,7 @@ const WatchScreen = () => {
                <h6>Loading...</h6>
             )}
          </Col>
-         <Col lg={4}>
+         <Col lg={4} xl={3}>
             {!loading ? (
                videos
                   ?.filter(video => video.snippet)

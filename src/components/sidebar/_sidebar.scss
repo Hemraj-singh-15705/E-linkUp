@@ -89,6 +89,13 @@
       transform: translateX(-100%);
 
       position: fixed;
-      z-index: 999;
+      z-index: 1000;
+      top: 0;
+      height: 100vh;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+
+      &.open {
+         transform: translateX(0);
+      }
    }
 }

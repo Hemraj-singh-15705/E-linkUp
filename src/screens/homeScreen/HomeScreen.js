@@ -37,7 +37,7 @@ const HomeScreen = () => {
             {!loading ? (
                videos.length > 0 ? (
                   videos.map(video => (
-                     <Col lg={3} md={4} key={video.id?.videoId || video.id}>
+                     <Col lg={3} md={4} sm={6} key={video.id?.videoId || video.id}>
                         <Video video={video} />
                      </Col>
                   ))
@@ -48,7 +48,7 @@ const HomeScreen = () => {
                )
             ) : (
                [...Array(20)].map((_, i) => (
-                  <Col lg={3} md={4} key={i}>
+                  <Col lg={3} md={4} sm={6} key={i}>
                      <SkeletonVideo />
                   </Col>
                ))
