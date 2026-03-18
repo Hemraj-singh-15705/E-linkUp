@@ -10,6 +10,7 @@ import { Redirect, Route, Switch } from 'react-router-dom'
 import './_app.scss'
 import WatchScreen from './screens/watchScreen/WatchScreen'
 import SearchScreen from './screens/SearchScreen'
+import FeaturePopup from './components/FeaturePopup/FeaturePopup'
 
 const Layout = ({ children }) => {
    const [sidebar, toggleSidebar] = useState(false)
@@ -34,28 +35,31 @@ const Layout = ({ children }) => {
 
 const App = () => {
    return (
-      <Switch>
-         <Route path='/' exact>
-            <Layout>
-               <HomeScreen />
-            </Layout>
-         </Route>
+      <>
+         <FeaturePopup />
+         <Switch>
+            <Route path='/' exact>
+               <Layout>
+                  <HomeScreen />
+               </Layout>
+            </Route>
 
-         <Route path='/search/:query'>
-            <Layout>
-               <SearchScreen />
-            </Layout>
-         </Route>
-         <Route path='/watch/:id'>
-            <Layout>
-               <WatchScreen />
-            </Layout>
-         </Route>
+            <Route path='/search/:query'>
+               <Layout>
+                  <SearchScreen />
+               </Layout>
+            </Route>
+            <Route path='/watch/:id'>
+               <Layout>
+                  <WatchScreen />
+               </Layout>
+            </Route>
 
-         <Route>
-            <Redirect to='/' />
-         </Route>
-      </Switch>
+            <Route>
+               <Redirect to='/' />
+            </Route>
+         </Switch>
+      </>
    )
 }
 
