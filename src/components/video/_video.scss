@@ -8,19 +8,39 @@
    font-size: 0.9rem;
 
    cursor: pointer;
-   transition: transform 0.2s ease-in-out;
+   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+   border-radius: 12px;
 
    &:hover {
-      transform: scale(1.05);
+      transform: scale(1.03) translateY(-4px);
       z-index: 10;
-      background-color: $black-secondary;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
+      background-color: var(--secondary-bg);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2), 0 0 15px rgba(59, 130, 246, 0.15);
+
+      .video__top::after {
+         opacity: 1;
+      }
    }
 
    &__top {
       margin-bottom: 0.5rem;
       position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+
+      &::after {
+         content: "▶";
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         font-size: 3rem;
+         color: rgba(255, 255, 255, 0.9);
+         opacity: 0;
+         transition: opacity 0.3s ease;
+         text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+         pointer-events: none;
+      }
 
       .lazy-load-image-background {
          width: 100%;
@@ -28,7 +48,8 @@
 
       img {
          width: 100%;
-         border-radius: 10px;
+         border-radius: 12px;
+         transition: transform 0.3s ease;
       }
 
       &__duration {
@@ -38,16 +59,19 @@
          right: 0.3rem;
          width: 45px;
          padding: 0.2rem;
-         background: #080808ec;
+         background: rgba(8, 8, 8, 0.85);
          border-radius: 3px;
+         font-size: 0.8rem;
+         text-align: center;
+         color: #fff;
       }
    }
 
    &__title {
       margin-bottom: 0.1rem;
 
-      color: #fff;
-      @include line-clamp(1);
+      color: var(--text-color);
+      @include line-clamp(2);
    }
 
    &__details {

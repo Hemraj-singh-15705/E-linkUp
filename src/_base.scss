@@ -1,11 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-$text-color: #eec1c1;
-$black-primary: #121212;
-$black-secondary: #202020;
-$border-color: #383838;
-$accent-color: #ff0000;
-$hover-color: #383838;
+:root {
+   /* Dark Theme (Default) */
+   --text-color: #f1f5f9;
+   --primary-bg: #0f172a;
+   --secondary-bg: #1e293b;
+   --border-color: #334155;
+   --accent-color: #3b82f6; 
+   --hover-color: #334155;
+   --glass-bg: rgba(15, 23, 42, 0.7);
+}
+
+[data-theme='light'] {
+   /* Light Theme */
+   --text-color: #0f172a;
+   --primary-bg: #f8fafc;
+   --secondary-bg: #ffffff;
+   --border-color: #e2e8f0;
+   --accent-color: #2563eb;
+   --hover-color: #f1f5f9;
+   --glass-bg: rgba(255, 255, 255, 0.7);
+}
+
+$text-color: var(--text-color);
+$black-primary: var(--primary-bg);
+$black-secondary: var(--secondary-bg);
+$border-color: var(--border-color);
+$accent-color: var(--accent-color);
+$hover-color: var(--hover-color);
 
 $breakpoint-medium: 1224px;
 $breakpoint-small: 520px;
@@ -20,8 +42,9 @@ body {
    background: $black-primary;
    background-attachment: fixed;
    color: $text-color;
-   font-family: 'Roboto', sans-serif;
+   font-family: 'Inter', sans-serif;
    letter-spacing: 0.1px;
+   transition: background 0.3s ease, color 0.3s ease;
 }
 
 @mixin line-clamp($number) {
@@ -32,5 +55,14 @@ body {
 }
 
 ::-webkit-scrollbar {
-   width: 0px;
+   width: 6px;
 }
+
+::-webkit-scrollbar-thumb {
+   background: var(--border-color);
+   border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+   background: var(--accent-color);
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container } from 'react-bootstrap'
 
 import Header from './components/header/Header'
@@ -12,14 +12,14 @@ import WatchScreen from './screens/watchScreen/WatchScreen'
 import SearchScreen from './screens/SearchScreen'
 import FeaturePopup from './components/FeaturePopup/FeaturePopup'
 
-const Layout = ({ children }) => {
+const Layout = ({ children, theme, toggleTheme }) => {
    const [sidebar, toggleSidebar] = useState(false)
 
    const handleToggleSidebar = () => toggleSidebar(value => !value)
 
    return (
       <>
-         <Header handleToggleSidebar={handleToggleSidebar} />
+         <Header handleToggleSidebar={handleToggleSidebar} theme={theme} toggleTheme={toggleTheme} />
          <div className='app__container'>
             <Sidebar
                sidebar={sidebar}
@@ -34,23 +34,34 @@ const Layout = ({ children }) => {
 }
 
 const App = () => {
+   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark')
+
+   useEffect(() => {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+   }, [theme]);
+
+   const toggleTheme = () => {
+      setTheme(prevTheme => prevTheme === 'dark' ? 'light' : 'dark');
+   }
+
    return (
       <>
          <FeaturePopup />
          <Switch>
             <Route path='/' exact>
-               <Layout>
+               <Layout theme={theme} toggleTheme={toggleTheme}>
                   <HomeScreen />
                </Layout>
             </Route>
 
             <Route path='/search/:query'>
-               <Layout>
+               <Layout theme={theme} toggleTheme={toggleTheme}>
                   <SearchScreen />
                </Layout>
             </Route>
             <Route path='/watch/:id'>
-               <Layout>
+               <Layout theme={theme} toggleTheme={toggleTheme}>
                   <WatchScreen />
                </Layout>
             </Route>
@@ -64,3 +75,4 @@ const App = () => {
 }
 
 export default App
+

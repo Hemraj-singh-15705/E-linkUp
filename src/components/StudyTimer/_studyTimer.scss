@@ -1,0 +1,201 @@
+@import '../../_base.scss';
+
+.study-timer-overlay, .break-screen-overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.7);
+   backdrop-filter: blur(8px);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   z-index: 10000;
+   animation: fadeIn 0.4s ease-out;
+}
+
+.study-timer-content {
+   background: var(--primary-bg);
+   border: 1px solid var(--border-color);
+   border-radius: 20px;
+   padding: 2rem;
+   max-width: 450px;
+   width: 90%;
+   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+   color: var(--text-color);
+   text-align: center;
+   animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.study-timer-header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 1.5rem;
+   
+   h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+   }
+
+   .close-icon {
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      
+      &:hover {
+         opacity: 1;
+      }
+   }
+}
+
+.study-timer-body {
+   p {
+      color: rgba(var(--text-color), 0.8);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+   }
+
+   .preset-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+
+      button {
+         background: var(--secondary-bg);
+         border: 1px solid var(--border-color);
+         color: var(--text-color);
+         padding: 10px;
+         border-radius: 8px;
+         cursor: pointer;
+         transition: all 0.2s;
+         font-weight: 500;
+
+         &:hover {
+            background: var(--hover-color);
+         }
+
+         &.active {
+            background: var(--accent-color);
+            color: #fff;
+            border-color: var(--accent-color);
+         }
+      }
+   }
+
+   .custom-input {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+
+      label {
+         margin-right: 10px;
+         font-weight: 500;
+      }
+
+      input {
+         width: 80px;
+         padding: 8px;
+         border-radius: 6px;
+         border: 1px solid var(--border-color);
+         background: var(--secondary-bg);
+         color: var(--text-color);
+         text-align: center;
+      }
+   }
+}
+
+.btn-start, .btn-stop, .btn-close-break {
+   background: var(--accent-color);
+   color: #fff;
+   border: none;
+   padding: 12px 30px;
+   border-radius: 50px;
+   font-size: 1.1rem;
+   font-weight: 600;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   width: 100%;
+
+   &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+      filter: brightness(1.1);
+   }
+}
+
+.btn-stop {
+   background: #ef4444; /* red */
+   margin-top: 2rem;
+   &:hover {
+      box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3);
+   }
+}
+
+.study-timer-running {
+   .time-display {
+      font-size: 5rem;
+      font-weight: 700;
+      color: var(--accent-color);
+      margin: 2rem 0;
+      font-variant-numeric: tabular-nums;
+   }
+}
+
+/* Break Screen Animations */
+.break-screen-content {
+   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+   border: 1px solid rgba(255, 255, 255, 0.1);
+   border-radius: 20px;
+   padding: 3rem 2rem;
+   max-width: 500px;
+   width: 90%;
+   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+   color: #fff;
+   text-align: center;
+   animation: slideUp 0.5s ease-out;
+
+   h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+   }
+
+   p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 3rem;
+   }
+}
+
+.animation-container {
+   height: 150px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 3rem;
+}
+
+.pulse-circle {
+   width: 80px;
+   height: 80px;
+   background: #10b981;
+   border-radius: 50%;
+   animation: pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes pulse {
+   0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+   }
+   50% {
+      transform: scale(1.5);
+      opacity: 0.5;
+      box-shadow: 0 0 0 40px rgba(16, 185, 129, 0);
+   }
+}
