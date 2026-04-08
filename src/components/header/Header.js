@@ -3,14 +3,17 @@ import './_header.scss'
 
 import { FaBars } from 'react-icons/fa'
 import { AiOutlineSearch } from 'react-icons/ai'
-import { MdNotifications, MdBrightness3, MdWbSunny } from 'react-icons/md'
+import { MdAlarm, MdColorLens } from 'react-icons/md'
+
 import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import StudyTimerModal from '../StudyTimer/StudyTimerModal'
+import ThemeSelectorModal from '../ThemeSelector/ThemeSelectorModal'
 
-const Header = ({ handleToggleSidebar, theme, toggleTheme }) => {
+const Header = ({ handleToggleSidebar, theme, toggleTheme, setTheme }) => {
    const [input, setInput] = useState('')
    const [showTimerModal, setShowTimerModal] = useState(false)
+   const [showThemeModal, setShowThemeModal] = useState(false)
 
    const history = useHistory()
 
@@ -48,15 +51,12 @@ const Header = ({ handleToggleSidebar, theme, toggleTheme }) => {
             </form>
 
             <div className='header__icons'>
-               <MdNotifications size={28} onClick={() => setShowTimerModal(true)} />
-               {theme === 'dark' ? (
-                  <MdWbSunny size={28} onClick={toggleTheme} />
-               ) : (
-                  <MdBrightness3 size={28} onClick={toggleTheme} />
-               )}
+               <MdAlarm size={28} onClick={() => setShowTimerModal(true)} title="Study Timer" />
+               <MdColorLens size={28} onClick={() => setShowThemeModal(true)} title="Themes Palette" />
             </div>
          </div>
-         {showTimerModal && <StudyTimerModal onClose={() => setShowTimerModal(false)} />}
+         <StudyTimerModal isOpen={showTimerModal} onClose={() => setShowTimerModal(false)} />
+         {showThemeModal && <ThemeSelectorModal onClose={() => setShowThemeModal(false)} currentTheme={theme} setTheme={setTheme} />}
       </>
    )
 }

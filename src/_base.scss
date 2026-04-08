@@ -22,6 +22,50 @@
    --glass-bg: rgba(255, 255, 255, 0.7);
 }
 
+[data-theme='dracula'] {
+   /* Dracula / Hacker */
+   --text-color: #f8f8f2;
+   --primary-bg: #282a36;
+   --secondary-bg: #44475a;
+   --border-color: #6272a4;
+   --accent-color: #ff79c6;
+   --hover-color: #6272a4;
+   --glass-bg: rgba(40, 42, 54, 0.7);
+}
+
+[data-theme='sunset'] {
+   /* Warm Sunset */
+   --text-color: #fff1f2;
+   --primary-bg: #4c1d95;
+   --secondary-bg: #701a75;
+   --border-color: #9d174d;
+   --accent-color: #fb923c;
+   --hover-color: #831843;
+   --glass-bg: rgba(76, 29, 149, 0.7);
+}
+
+[data-theme='cyberpunk'] {
+   /* Cyberpunk Neon */
+   --text-color: #fef08a;
+   --primary-bg: #09090b;
+   --secondary-bg: #18181b;
+   --border-color: #ec4899;
+   --accent-color: #22d3ee;
+   --hover-color: #27272a;
+   --glass-bg: rgba(9, 9, 11, 0.7);
+}
+
+[data-theme='forest'] {
+   /* Forest Zen */
+   --text-color: #ecfdf5;
+   --primary-bg: #064e3b;
+   --secondary-bg: #065f46;
+   --border-color: #047857;
+   --accent-color: #34d399;
+   --hover-color: #0f766e;
+   --glass-bg: rgba(6, 78, 59, 0.7);
+}
+
 $text-color: var(--text-color);
 $black-primary: var(--primary-bg);
 $black-secondary: var(--secondary-bg);

@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './_studyTimer.scss';
 import { MdClose } from 'react-icons/md';
 
-const BreakScreen = ({ onClose }) => {
+const BreakScreen = ({ onClose, activeMinutes }) => {
    return (
       <div className="break-screen-overlay">
          <div className="break-screen-content">
             <h1>🎉 Time's Up!</h1>
-            <p>You did great. Now take a screen break, stretch, and relax your eyes!</p>
+            <p>You have been watching video for {activeMinutes} minutes. Take a break now!</p>
             <div className="animation-container">
                <div className="pulse-circle"></div>
             </div>
@@ -17,8 +17,9 @@ const BreakScreen = ({ onClose }) => {
    )
 }
 
-const StudyTimerModal = ({ onClose }) => {
+const StudyTimerModal = ({ isOpen, onClose }) => {
    const [minutes, setMinutes] = useState(25);
+   const [activeMinutes, setActiveMinutes] = useState(0);
    const [timeLeft, setTimeLeft] = useState(null);
    const [isBreak, setIsBreak] = useState(false);
 
@@ -39,12 +40,16 @@ const StudyTimerModal = ({ onClose }) => {
    }, [timeLeft]);
 
    const startTimer = () => {
+      setActiveMinutes(minutes);
       setTimeLeft(minutes * 60);
+      onClose();
    };
 
    if (isBreak) {
-      return <BreakScreen onClose={onClose} />;
+      return <BreakScreen onClose={() => { setIsBreak(false); setTimeLeft(null); onClose(); }} activeMinutes={activeMinutes} />;
    }
+
+   if (!isOpen) return null;
 
    const formatTime = (seconds) => {
       const m = Math.floor(seconds / 60);

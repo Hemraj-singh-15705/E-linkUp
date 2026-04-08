@@ -12,14 +12,14 @@ import WatchScreen from './screens/watchScreen/WatchScreen'
 import SearchScreen from './screens/SearchScreen'
 import FeaturePopup from './components/FeaturePopup/FeaturePopup'
 
-const Layout = ({ children, theme, toggleTheme }) => {
+const Layout = ({ children, theme, toggleTheme, setTheme }) => {
    const [sidebar, toggleSidebar] = useState(false)
 
    const handleToggleSidebar = () => toggleSidebar(value => !value)
 
    return (
       <>
-         <Header handleToggleSidebar={handleToggleSidebar} theme={theme} toggleTheme={toggleTheme} />
+         <Header handleToggleSidebar={handleToggleSidebar} theme={theme} toggleTheme={toggleTheme} setTheme={setTheme} />
          <div className='app__container'>
             <Sidebar
                sidebar={sidebar}
@@ -50,18 +50,18 @@ const App = () => {
          <FeaturePopup />
          <Switch>
             <Route path='/' exact>
-               <Layout theme={theme} toggleTheme={toggleTheme}>
+               <Layout theme={theme} toggleTheme={toggleTheme} setTheme={setTheme}>
                   <HomeScreen />
                </Layout>
             </Route>
 
             <Route path='/search/:query'>
-               <Layout theme={theme} toggleTheme={toggleTheme}>
+               <Layout theme={theme} toggleTheme={toggleTheme} setTheme={setTheme}>
                   <SearchScreen />
                </Layout>
             </Route>
             <Route path='/watch/:id'>
-               <Layout theme={theme} toggleTheme={toggleTheme}>
+               <Layout theme={theme} toggleTheme={toggleTheme} setTheme={setTheme}>
                   <WatchScreen />
                </Layout>
             </Route>
